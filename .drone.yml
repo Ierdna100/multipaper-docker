@@ -18,11 +18,11 @@ steps:
           - push
           - tag
     settings:
-      repo: ghcr.io/ierdna100/multipaper-master
+      repo: ghcr.io/ierdna100/multipaper-docker
       registry: ghcr.io
       dockerfile: ./master/Dockerfile
       tags:
-        - latest
+        - client-latest
       username: ierdna100
       password:
         from_secret: github-token
@@ -38,11 +38,11 @@ steps:
           - push
           - tag
     settings:
-      repo: ghcr.io/ierdna100/multipaper-client
+      repo: ghcr.io/ierdna100/multipaper-docker
       registry: ghcr.io
       dockerfile: ./client/Dockerfile
       tags:
-        - latest
+        - master-latest
       username: ierdna100
       password:
         from_secret: github-token
