@@ -1,0 +1,52 @@
+kind: pipeline
+type: kubernetes
+name: default
+
+metadata:
+  namespace: drone
+
+steps:
+  - name: build-multipaper-master
+    image: plugins/docker
+    dockerfile: 
+
+    when:
+      branch:
+        - master
+      event:
+        include:
+          - push
+          - tag
+    settings:
+      repo: ghcr.io/ierdna100/multipaper-master
+      registry: ghcr.io
+      dockerfile: ./master/Dockerfile
+      tags:
+        - latest
+      username: ierdna100
+      password:
+        from_secret: github-token
+  - name: build-multipaper-client
+    image: plugins/docker
+    dockerfile: 
+
+    when:
+      branch:
+        - master
+      event:
+        include:
+          - push
+          - tag
+    settings:
+      repo: ghcr.io/ierdna100/multipaper-client
+      registry: ghcr.io
+      dockerfile: ./client/Dockerfile
+      tags:
+        - latest
+      username: ierdna100
+      password:
+        from_secret: github-token
+
+trigger:
+  branch:
+    - master
