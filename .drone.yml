@@ -22,7 +22,7 @@ steps:
       registry: ghcr.io
       dockerfile: ./master/Dockerfile
       tags:
-        - client-latest
+        - master-latest
       username: ierdna100
       password:
         from_secret: github-token
@@ -42,7 +42,7 @@ steps:
       registry: ghcr.io
       dockerfile: ./client/Dockerfile
       tags:
-        - master-latest
+        - client-latest
       username: ierdna100
       password:
         from_secret: github-token
